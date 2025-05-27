@@ -1,0 +1,38 @@
+
+
+--------------------------------------------------------------------------------
+
+Command: run Delft3D-WAVE
+   Starting Delft3D-WAVE computation ...
+
+********************************************************************************
+***
+*** Deltares, Delft3D-WAVE Version 3.08.01.142586, Feb 23 2023, 17:41:41
+***           built from : https://svn.oss.deltares.nl/repos/delft3d/trunk
+***
+***           runid      : model_gelombang.mdw
+***
+********************************************************************************
+
+*** MESSAGE: Delft3D-WAVE runs stand alone
+ Done reading input
+  Initialising grids and grid mappings
+  Start loop over SWAN grids, time =           0.000 minutes since 20250525.000000
+  Allocate input fields
+  Allocate and read SWAN depth
+  Write SWAN depth file
+  Write SWAN input
+*** MESSAGE: 'model_gelombang' is truncated to 'model_ge' in SWAN input file
+<<Run SWAN...
+>>...Check file swan_bat.log
+
+D:\Projects\DELFT3D\Simulasi Gelombang>rem exit /B 
+>>...End of SWAN run
+  Allocate output fields
+  Read SWAN output
+  Write WAVE map file, nest          1 time           0.000
+  Time written          0
+  Write WAVE NetCDF map file, nest          1 time      0.000
+ Number of non-existing grid points detected:            0
+  Deallocate input fields
+Delft3D-WAVE finished normally.

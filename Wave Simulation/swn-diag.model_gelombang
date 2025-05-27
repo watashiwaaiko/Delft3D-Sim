@@ -1,0 +1,367 @@
+1
+
+                    Execution started at 20250525.100011
+
+
+
+                    ---------------------------------------
+                                     SWAN
+                    SIMULATION OF WAVES IN NEAR SHORE AREAS
+                    DELTARES VERSION NUMBER 41.31A.1
+                    ---------------------------------------
+
+
+
+  $***************************** HEADING *********************************
+
+  $
+
+  PROJECT  'Sim Gelombang   '  '1   '
+
+      '                                                                        '
+
+      '                                                                        '
+
+      '                                                                        '
+
+  $
+
+  $***************************** MODEL INPUT *****************************
+
+  $
+
+  SET   LEVEL =   0.00  NOR =  90.00    DEPMIN =   0.05 _
+         MAXMES = 1000   MAXERR = 2 _
+        GRAV =    9.81  RHO =  1025.00  INRHOG =      1 _
+        NAUT
+
+  $
+
+  MODE NONST
+
+  CGRID CURV  100  100 EXCEPT  -0.99999900000000002E+03  -0.99999900000000002E+03   _
+        CIR                         36       0.05       1.00   24
+ Resolution in sigma-space: df/f =  0.1329
+
+  $
+
+  READ COOR 1. 'TMP_grid2swan01' _
+   4   0   1 FREE
+ **  Heading lines  **
+ -> x-coordinates
+ **  Heading lines  **
+ -> y-coordinates
+
+  $
+
+  INPGRID _
+  BOTTOM CURV 0. 0.  100  100
+
+  READINP BOTTOM 1.0   'BOTNOW' 4 0 FREE
+
+  $
+
+  $
+
+  $
+
+  BOUN SHAPE JONSWAP   3.30 PEAK DSPR POWER
+
+  BOUN SIDE N  CCW     _
+ ** Warning          :  keyword SIDE should not be used for curvilinear grid
+                      CON  PAR     5.25   12.00  225.00    4.00
+
+  BOUN SHAPE JONSWAP   3.30 PEAK DSPR POWER
+
+  BOUN SIDE S  CCW     _
+ ** Warning          :  keyword SIDE should not be used for curvilinear grid
+                      CON  PAR     5.25   12.00  225.00    4.00
+
+  BOUN SHAPE JONSWAP   3.30 PEAK DSPR POWER
+
+  BOUN SIDE W  CCW     _
+ ** Warning          :  keyword SIDE should not be used for curvilinear grid
+                      CON  PAR     5.25   12.00  225.00    4.00
+
+  $
+
+  GEN3
+
+  BREAK CON       1.00    0.73
+
+  FRIC JON       0.0670
+
+  OFF WINDG
+
+  OFF QUAD
+
+  OFF WCAP
+
+  LIM  10 1
+
+  NUM DIR cdd=   0.50 SIGIM css=   0.50
+
+  $
+
+  NUM ACCUR        0.020    0.020    0.020   98.000   15
+
+  $
+
+  $***************************** OUTPUT REQUEST **************************
+
+  $
+
+ OUTPUT OPTIONS SPEC ndec=8
+
+  QUANTITY HSIGN   excv=-999.0
+
+  QUANTITY DIR     excv=-999.0
+
+  QUANTITY TM01    excv=-999.0
+
+  QUANTITY DEPTH   excv=-999.0
+
+  QUANTITY VELOC   excv=-999.0
+
+  QUANTITY TRANSP  excv=-999.0
+
+  QUANTITY DSPR    excv=-999.0
+
+  QUANTITY DISSIP  excv=-999.0
+
+  QUANTITY LEAK    excv=-999.0
+
+  QUANTITY QB      excv=-999.0
+
+  QUANTITY XP      excv=-999.0
+
+  QUANTITY YP      excv=-999.0
+
+  QUANTITY DIST    excv=-999.0
+
+  QUANTITY UBOT    excv=-999.0
+
+  QUANTITY STEEPW  excv=-999.0
+
+  QUANTITY WLENGTH excv=-999.0
+
+  QUANTITY FORCES  excv=-999.0
+
+  QUANTITY RTP     excv=-999.0
+
+  QUANTITY PDIR    excv=-999.0
+
+  QUANTITY WIND    excv=-999.0
+
+  QUANTITY TPS     excv=-999.0
+
+  QUANTITY TM02    excv=-999.0
+
+  QUANTITY TMM10   excv=-999.0
+
+  QUANTITY DHSIGN  excv=-999.0
+
+  QUANTITY DRTM01  excv=-999.0
+
+  QUANTITY SETUP   excv=-999.0
+
+  QUANTITY DISSURF excv=-999.0
+
+  QUANTITY DISWCAP excv=-999.0
+
+  QUANTITY DISBOT  excv=-999.0
+
+  QUANTITY DISVEG  excv=-999.0
+
+  QUANTITY NPLANTS excv=-999.0
+
+  $
+
+  TABLE 'COMPGRID' NOHEAD 'SWANOUT1'  _
+   HSIGN    DIR      TM01     DEPTH    VELOC    TRANSP _
+   DSPR     DISSIP   LEAK     QB       XP       YP     _
+   DIST     UBOT     STEEPW   WLENGTH  FORCES   RTP    _
+   PDIR     WIND
+
+  $
+
+  TABLE 'COMPGRID' NOHEAD 'SWANOUT2'  _
+   TPS      TM02     TMM10    DHSIGN   DRTM01   SETUP   _
+   DISSURF  DISWCAP  DISBOT   DISVEG   NPLANTS
+
+  $
+
+  $
+
+  $
+
+
+
+  TEST  ITEST=   0  ITRACE=   0
+
+  COMPUTE STAT   20250525.000000
+ ** Warning          : Limiter is de-activated in case of no quadruplets
+ iteration    1; sweep 1
+ iteration    1; sweep 2
+ iteration    1; sweep 3
+ iteration    1; sweep 4
+ accuracy OK in   1.77 % of wet grid points ( 98.00 % required)
+
+ iteration    2; sweep 1
+ iteration    2; sweep 2
+ iteration    2; sweep 3
+ iteration    2; sweep 4
+ accuracy OK in  70.05 % of wet grid points ( 98.00 % required)
+
+ iteration    3; sweep 1
+ iteration    3; sweep 2
+ iteration    3; sweep 3
+ iteration    3; sweep 4
+ accuracy OK in  96.08 % of wet grid points ( 98.00 % required)
+
+ iteration    4; sweep 1
+ iteration    4; sweep 2
+ iteration    4; sweep 3
+ iteration    4; sweep 4
+ accuracy OK in  99.29 % of wet grid points ( 98.00 % required)
+
+  ** WARNING : Differences in wave height at the boundary
+ Relative difference between input and computation >=   0.10
+                         Hs[m]      Hs[m]      Hs[-]
+     ix    iy  index   (input) (computed) (relative)
+  --------------------------------------------------
+     1   101    102       5.29       0.00       1.00
+     2   101    203       5.29       0.00       1.00
+     3   101    304       5.29       0.00       1.00
+     4   101    405       5.29       0.00       1.00
+     5   101    506       5.29       0.00       1.00
+     6   101    607       5.29       0.00       1.00
+     7   101    708       5.29       0.00       1.00
+     8   101    809       5.29       0.00       1.00
+     9   101    910       5.29       0.00       1.00
+    10   101   1011       5.29       0.00       1.00
+    11   101   1112       5.29       0.00       1.00
+    12   101   1213       5.29       0.00       1.00
+    13   101   1314       5.29       0.00       1.00
+    14   101   1415       5.29       0.00       1.00
+    15   101   1516       5.29       0.00       1.00
+    16   101   1617       5.29       0.00       1.00
+    17   101   1718       5.29       0.00       1.00
+    18   101   1819       5.29       0.00       1.00
+    19   101   1920       5.29       0.00       1.00
+    20   101   2021       5.29       0.00       1.00
+    21   101   2122       5.29       0.00       1.00
+    22   101   2223       5.29       0.00       1.00
+    23   101   2324       5.29       0.00       1.00
+    24   101   2425       5.29       0.00       1.00
+    25   101   2526       5.29       0.00       1.00
+    26   101   2627       5.29       0.83       0.84
+    27   101   2728       5.29       2.25       0.57
+    28   101   2829       5.29       3.71       0.30
+    29   101   2930       5.29       4.22       0.20
+    30   101   3031       5.29       4.35       0.18
+    31   101   3132       5.29       4.50       0.15
+    32   101   3233       5.29       4.64       0.12
+     1   100    101       5.29       0.00       1.00
+     1    99    100       5.29       0.00       1.00
+     1    98     99       5.29       0.00       1.00
+     1    97     98       5.29       0.00       1.00
+     1    96     97       5.29       0.00       1.00
+     1    95     96       5.29       0.00       1.00
+     1    94     95       5.29       0.00       1.00
+     1    93     94       5.29       0.00       1.00
+     1    92     93       5.29       0.00       1.00
+     1    91     92       5.29       0.00       1.00
+     1    90     91       5.29       0.00       1.00
+     1    89     90       5.29       0.00       1.00
+     1    88     89       5.29       0.00       1.00
+     1    87     88       5.29       0.00       1.00
+     1    86     87       5.29       0.00       1.00
+     1    85     86       5.29       0.00       1.00
+     1    84     85       5.29       0.00       1.00
+     1    83     84       5.29       0.00       1.00
+     1    82     83       5.29       0.00       1.00
+     1    81     82       5.29       0.00       1.00
+     1    80     81       5.29       0.00       1.00
+     1    79     80       5.29       0.00       1.00
+     1    78     79       5.29       0.00       1.00
+     1    77     78       5.29       0.00       1.00
+     1    76     77       5.29       0.00       1.00
+     1    75     76       5.29       0.00       1.00
+     1    74     75       5.29       0.00       1.00
+     1    73     74       5.29       0.00       1.00
+     1    72     73       5.29       0.00       1.00
+     1    71     72       5.29       0.00       1.00
+     1    70     71       5.29       0.00       1.00
+     1    69     70       5.29       0.00       1.00
+     1    68     69       5.29       0.00       1.00
+     1    67     68       5.29       0.00       1.00
+     1    66     67       5.29       0.00       1.00
+     1    65     66       5.29       0.00       1.00
+     1    64     65       5.29       0.00       1.00
+     1    63     64       5.29       0.00       1.00
+     1    62     63       5.29       0.00       1.00
+     1    61     62       5.29       0.00       1.00
+     1    60     61       5.29       0.00       1.00
+     1    59     60       5.29       0.00       1.00
+     1    58     59       5.29       0.00       1.00
+     1    57     58       5.29       0.00       1.00
+     1    56     57       5.29       0.00       1.00
+     1    55     56       5.29       0.00       1.00
+     1    54     55       5.29       0.00       1.00
+     1    53     54       5.29       0.00       1.00
+     1    52     53       5.29       0.00       1.00
+     1    51     52       5.29       0.00       1.00
+     1    50     51       5.29       0.00       1.00
+     1    49     50       5.29       0.00       1.00
+     1    48     49       5.29       0.00       1.00
+     1    47     48       5.29       0.00       1.00
+     1    46     47       5.29       0.00       1.00
+     1    45     46       5.29       0.00       1.00
+     1    44     45       5.29       0.00       1.00
+     1    43     44       5.29       0.00       1.00
+     1    42     43       5.29       0.00       1.00
+     1    41     42       5.29       0.00       1.00
+     1    40     41       5.29       0.00       1.00
+     1    39     40       5.29       0.00       1.00
+     1    38     39       5.29       0.00       1.00
+     1    37     38       5.29       0.00       1.00
+     1    36     37       5.29       0.00       1.00
+     1    35     36       5.29       0.00       1.00
+     1    34     35       5.29       0.00       1.00
+     1    33     34       5.29       0.00       1.00
+     1    32     33       5.29       0.00       1.00
+     1    31     32       5.29       0.00       1.00
+     1    30     31       5.29       0.00       1.00
+     1    29     30       5.29       0.00       1.00
+     1    28     29       5.29       0.00       1.00
+     1    27     28       5.29       0.00       1.00
+     1    26     27       5.29       0.00       1.00
+     1    25     26       5.29       0.00       1.00
+     1    24     25       5.29       0.00       1.00
+     1    23     24       5.29       0.00       1.00
+     1    22     23       5.29       0.00       1.00
+     1    21     22       5.29       0.00       1.00
+     1    20     21       5.29       0.00       1.00
+     1    19     20       5.29       0.00       1.00
+     1    18     19       5.29       0.00       1.00
+     1    17     18       5.29       0.00       1.00
+     1    16     17       5.29       0.00       1.00
+     1    15     16       5.29       0.00       1.00
+     1    14     15       5.29       0.00       1.00
+     1    13     14       5.29       0.00       1.00
+     1    12     13       5.29       0.00       1.00
+     1    11     12       5.29       0.00       1.00
+     1    10     11       5.29       0.00       1.00
+     1     9     10       5.29       0.00       1.00
+     1     8      9       5.29       0.00       1.00
+     1     7      8       5.29       0.00       1.00
+     1     6      7       5.29       0.00       1.00
+     1     5      6       5.29       0.00       1.00
+     1     4      5       5.29       0.00       1.00
+     1     3      4       5.29       0.00       1.00
+     1     2      3       5.29       0.00       1.00
+     1     1      2       5.29       0.00       1.00
+
+
+  STOP
